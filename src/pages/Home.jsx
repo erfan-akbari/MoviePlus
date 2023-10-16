@@ -2,7 +2,7 @@ import HeroBanner from "../components/HeroBanner"
 
 function Home() {
   return (
-    <div className="bg-white">
+    <div>
       <HeroBanner />
     </div>
   )

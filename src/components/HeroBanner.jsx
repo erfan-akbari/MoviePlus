@@ -41,7 +41,7 @@ function HeroBanner() {
           </span>
           <div className='flex items-center w-full h-10 overflow-hidden rounded-3xl text-sm md:text-xl'>
             <input
-              className='basis-[80%] h-full px-3 md:px-6 bg-white'
+              className='basis-[80%] h-full px-3 md:px-6 bg-white text-gray-700 border-none outline-none'
               type="text"
               placeholder='Search for a movie or tv show....'
               value={query}
