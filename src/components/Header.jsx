@@ -66,7 +66,7 @@ function Header() {
   }
 
   return (
-    <header className={`py-3 fixed top-0 left-0 right-0 z-20 text-stone-100 backdrop-blur-sm ${mobileMenu ? 'bg-gray-950' : 'bg-gray-900/40'} ${show ? 'translate-y-0' : '-translate-y-40'} transition-all duration-300`}>
+    <header className={`py-3 fixed top-0 left-0 right-0 z-20 text-stone-100 backdrop-blur-sm ${mobileMenu ? 'bg-primary-200' : 'bg-primary-200/40'} ${show ? 'translate-y-0' : '-translate-y-40'} transition-all duration-300`}>
       <ContentWrapper>
         <div className="flex items-center justify-between">
           <div className="">
@@ -75,10 +75,10 @@ function Header() {
             </h1>
           </div>
           <ul className="flex items-center gap-5">
-            <li className='hidden sm:block cursor-pointer hover:text-red-700' onClick={() => navigationHandler('movie')}>Movies</li>
-            <li className='hidden sm:block cursor-pointer hover:text-red-700' onClick={() => navigationHandler('tv')}>TV Shows</li>
-            <li className='cursor-pointer hover:text-red-700' onClick={openSearch}><HiOutlineSearch /></li>
-            <li className='block sm:hidden cursor-pointer hover:text-red-700' onClick={openMobileMenu}>
+            <li className='hidden sm:block cursor-pointer hover:text-primary-pink' onClick={() => navigationHandler('movie')}>Movies</li>
+            <li className='hidden sm:block cursor-pointer hover:text-primary-pink' onClick={() => navigationHandler('tv')}>TV Shows</li>
+            <li className='cursor-pointer hover:text-primary-pink' onClick={openSearch}><HiOutlineSearch /></li>
+            <li className='block sm:hidden cursor-pointer hover:text-primary-pink' onClick={openMobileMenu}>
               {mobileMenu ? <VscChromeClose /> : <SlMenu />}
             </li>
           </ul>
@@ -100,13 +100,13 @@ function Header() {
         </ContentWrapper>
       </div>
       {/* >>> menu mobile <<< */}
-      <div className={`absolute top-full left-0 right-0 w-full bg-gray-950 py-3 ${mobileMenu ? 'translate-y-0' : '-translate-y-44'} transition-all duration-300`}>
+      <div className={`absolute top-full left-0 right-0 w-full bg-primary-200 py-3 ${mobileMenu ? 'translate-y-0' : '-translate-y-44'} transition-all duration-300`}>
         <ContentWrapper>
           <ul className='font-semibold space-y-2 my-2'>
-            <li className='cursor-pointer hover:text-red-700' onClick={() => navigationHandler('movie')}>
+            <li className='cursor-pointer hover:text-primary-pink' onClick={() => navigationHandler('movie')}>
               Movies
             </li>
-            <li className='cursor-pointer hover:text-red-700' onClick={() => navigationHandler('tv')}>
+            <li className='cursor-pointer hover:text-primary-pink' onClick={() => navigationHandler('tv')}>
               TV Shows
             </li>
           </ul>
