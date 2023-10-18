@@ -13,11 +13,15 @@ const useFetch = (url) => {
 
         fetchDataFromApi(url)
             .then(res => {
-                setLoading(false)
+                setTimeout(() => {
+                    setLoading(false)
+                }, 1000);
                 setData(res)
             })
             .catch(err => {
-                setLoading(false)
+                setTimeout(() => {
+                    setLoading(false)
+                }, 1000);
                 setError('Something went wrong!')
             })
     }, [url])

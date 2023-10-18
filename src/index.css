@@ -55,3 +55,10 @@
                 #04152d 79.17%);
     }
 }
+
+.swiper-button-prev::after {
+    font-size: 30px;
+}
+.swiper-button-next::after {
+    font-size: 30px;
+}
