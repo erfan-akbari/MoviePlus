@@ -10,6 +10,7 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import ShimmerLoading from './ShimmerLoading';
 import CircleRating from './CircleRating';
+import Genres from './Genres';
 
 function Carousel({ data, loading }) {
     const { url } = useSelector(state => state.home)
@@ -35,6 +36,7 @@ function Carousel({ data, loading }) {
                                         <div className='relative'>
                                             <Img src={posterUrl} className={'block w-full h-full object-cover rounded-md'} />
                                             <CircleRating rating={item.vote_average.toFixed(1)} />
+                                            <Genres data={item.genre_ids.slice(0, 2)} />
                                         </div>
                                         <div className="mt-5 text-gray-100">
                                             <div className='whitespace-nowrap overflow-hidden text-ellipsis w-full'>{item.title}</div>
