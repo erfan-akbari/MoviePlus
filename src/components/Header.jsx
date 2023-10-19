@@ -66,7 +66,7 @@ function Header() {
   }
 
   return (
-    <header className={`py-3 fixed top-0 left-0 right-0 z-20 text-stone-100 backdrop-blur-sm ${mobileMenu ? 'bg-primary-200' : 'bg-primary-200/40'} ${show ? 'translate-y-0' : '-translate-y-40'} transition-all duration-300`}>
+    <header className={`py-3 fixed top-0 left-0 right-0 z-50 text-stone-100 backdrop-blur-sm ${mobileMenu ? 'bg-primary-200' : 'bg-primary-200/40'} ${show ? 'translate-y-0' : '-translate-y-40'} transition-all duration-300`}>
       <ContentWrapper>
         <div className="flex items-center justify-between">
           <div className="">

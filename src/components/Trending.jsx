@@ -19,7 +19,7 @@ function Trending() {
         <section className="text-white my-2.5">
             <ContentWrapper>
                 <div className="flex items-center justify-between">
-                    <span className="text-2xl">Trending</span>
+                    <span className="text-xl sm:text-2xl">Trending</span>
                     <SwitchTabs values={["day", "week"]} switchTabsHandler={switchTabsHandler} />
                 </div>
             </ContentWrapper>

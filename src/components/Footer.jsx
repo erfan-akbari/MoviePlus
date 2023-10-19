@@ -12,7 +12,7 @@ function Footer() {
   return (
     <footer className='bg-primary-200 py-8'>
       <ContentWrapper>
-        <ul className="text-white flex items-center justify-center gap-5">
+        <ul className="text-white flex items-center justify-center gap-5 text-sm sm:text-lg">
           <li className="hover:text-primary-pink">
             <Link to={''} >terms Of Use</Link>
           </li>
@@ -29,7 +29,7 @@ function Footer() {
             <Link to={''} >FAQ</Link>
           </li>
         </ul>
-        <div className="text-stone-400 text-center my-6">
+        <div className="text-xs/[18px] sm:text-sm text-stone-400 text-center my-6">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi qui modi dolor voluptate autem inventore libero, voluptatibus quam tenetur voluptas! Eum esse, laboriosam voluptates deserunt tempore nihil dicta illo aut alias? Ipsam cum dolorum aspernatur minima aut quae, consequatur commodi odit deserunt praesentium temporibus provident
         </div>
         <div className="flex items-center justify-center gap-5 text-white">
