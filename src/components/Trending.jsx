@@ -23,7 +23,7 @@ function Trending() {
                     <SwitchTabs values={["day", "week"]} switchTabsHandler={switchTabsHandler} />
                 </div>
             </ContentWrapper>
-            <Carousel data={data?.results} loading={loading} />
+            <Carousel data={data?.results} loading={loading} type={endpoint} />
         </section>
     )
 }

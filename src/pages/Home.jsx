@@ -5,12 +5,12 @@ import Trending from "../components/Trending"
 
 function Home() {
   return (
-    <div>
+    <main>
       <HeroBanner />
       <Trending />
       <Popular />
       <TopRated />
-    </div>
+    </main>
   )
 }
 

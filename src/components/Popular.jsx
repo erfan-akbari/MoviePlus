@@ -23,7 +23,7 @@ function Popular() {
                     <SwitchTabs values={["movies", "tv shows"]} switchTabsHandler={switchTabsHandler} />
                 </div>
             </ContentWrapper>
-            <Carousel data={data?.results} loading={loading} />
+            <Carousel data={data?.results} loading={loading} type={endpoint}  />
         </section>
     )
 }

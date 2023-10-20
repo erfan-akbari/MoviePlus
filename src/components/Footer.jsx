@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
-    <footer className='bg-primary-200 py-8'>
+    <footer className='bg-primary-200 py-8 mt-10'>
       <ContentWrapper>
         <ul className="text-white flex items-center justify-center gap-5 text-sm sm:text-lg">
           <li className="hover:text-primary-pink">
