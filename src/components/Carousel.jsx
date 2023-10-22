@@ -1,6 +1,5 @@
-import { useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import ContentWrapper from './ContentWrapper'
 import Img from './LazyLoadlImage'
