@@ -9,8 +9,13 @@ import useFetch from "../hooks/useFetch"
 import Genres from "./Genres"
 import CircleRating from "./CircleRating"
 import Img from "./LazyLoadlImage"
+import ShimmerLoading2 from "./ShimmerLoading2"
+import VideoPopup from "./VideoPopup"
 
 function DetailsBanner({ video, crew }) {
+    const [show, setShow] = useState(false)
+    const [videoId, setVideoId] = useState(null)
+
     const { mediaType, id } = useParams()
     const { data, loading } = useFetch(`/${mediaType}/${id}`)
     const { url } = useSelector(state => state.home)
@@ -33,21 +38,21 @@ function DetailsBanner({ video, crew }) {
                     {data && (
                         <>
                             <ContentWrapper>
-                                <div className="flex gap-5 flex-col md:flex-row mt-20">
-                                    <div>
+                                <div className="flex gap-10 flex-col md:flex-row mt-20">
+                                    <div className="h-[700px] sm:h-[500px] lg:h-[600px] basis-[40%]">
                                         {data.poster_path ? (
                                             <Img
-                                                className={'w-full lg:max-w-[500px] max-h-[700px] rounded-md'}
+                                                className={'w-full h-full rounded-md'}
                                                 src={url.backdrop + data?.poster_path}
                                             />
                                         ) : (
                                             <Img
-                                                className={'w-full max-h-[700px] rounded-md'}
+                                                className={'w-full h-full rounded-md'}
                                                 src={url.backdrop + data?.poster_path}
                                             />
                                         )}
                                     </div>
-                                    <div>
+                                    <div className="basis-[60%]">
                                         <div className="text-white text-3xl mt-5">
                                             {`${data.title || data.name} (${dayjs(data?.release_date).format("YYYY")})`}
                                         </div>
@@ -64,7 +69,10 @@ function DetailsBanner({ video, crew }) {
                                                 className={'bg-primary-200 rounded-full w-14 my-5'}
                                             />
                                             <div className="flex items-center gap-4 cursor-pointer group"
-                                                onClick={() => { }}
+                                                onClick={() => {
+                                                    setShow(true)
+                                                    setVideoId(data.id)
+                                                }}
                                             >
                                                 <BsPlayCircle
                                                     className="w-14 h-14 text-white group-hover:text-primary-pink duration-300"
@@ -74,10 +82,12 @@ function DetailsBanner({ video, crew }) {
                                                 </span>
                                             </div>
                                         </div>
-                                        <div className="text-gray-400">
-                                            <h2 className="text-white text-xl py-2">Overview:</h2>
-                                            <p className="text-gray-400">{data.overview}</p>
-                                        </div>
+                                        {data.overview && (
+                                            <div className="text-gray-400">
+                                                <h2 className="text-white text-xl py-2">Overview:</h2>
+                                                <p className="text-gray-400">{data.overview}</p>
+                                            </div>
+                                        )}
                                         <div className="flex items-center gap-2 mt-10 py-2 border-b border-gray-800">
                                             {data.status && (
                                                 <div className="text-white flex flex-wrap gap-1.5">
@@ -115,7 +125,7 @@ function DetailsBanner({ video, crew }) {
                                                 <span className="text-white">
                                                     Director:
                                                 </span>
-                                                <span className="">
+                                                <span>
                                                     {director.map((d, i) => (
                                                         <span key={i} className="text-gray-500 w-full">
                                                             {d.name}
@@ -130,7 +140,7 @@ function DetailsBanner({ video, crew }) {
                                                 <span className="text-white">
                                                     Writer:
                                                 </span>
-                                                <span className="">
+                                                <span>
                                                     {writer.map((w, i) => (
                                                         <span key={i} className="text-gray-500 w-full">
                                                             {w.name}
@@ -145,7 +155,7 @@ function DetailsBanner({ video, crew }) {
                                                 <span className="text-white">
                                                     Creator:
                                                 </span>
-                                                <span className="">
+                                                <span>
                                                     {data?.created_by?.map((d, i) => (
                                                         <span key={i} className="text-gray-500 w-full">
                                                             {d.name}
@@ -157,12 +167,18 @@ function DetailsBanner({ video, crew }) {
                                         )}
                                     </div>
                                 </div>
+                                <VideoPopup 
+                                    show={show}
+                                    setShow={setShow}
+                                    videoId={videoId}
+                                    setVideoId={setVideoId}
+                                />
                             </ContentWrapper>
                         </>
                     )}
                 </>
             ) : (
-                <div></div>
+                <ShimmerLoading2 />
             )}
 
         </div>

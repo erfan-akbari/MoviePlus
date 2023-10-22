@@ -8,7 +8,7 @@ function Details() {
   const { data: credits, loading: creditsLoading } = useFetch(`/${mediaType}/${id}/credits`)
 
   return (
-    <main>
+    <main className="relative">
       <DetailsBanner videos={data?.result?.[0]} crew={credits?.crew} />
     </main>
   )
