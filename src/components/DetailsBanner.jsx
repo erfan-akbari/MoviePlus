@@ -71,7 +71,7 @@ function DetailsBanner({ video, crew }) {
                                             <div className="flex items-center gap-4 cursor-pointer group"
                                                 onClick={() => {
                                                     setShow(true)
-                                                    setVideoId(data.id)
+                                                    setVideoId(data.key)
                                                 }}
                                             >
                                                 <BsPlayCircle
@@ -172,6 +172,7 @@ function DetailsBanner({ video, crew }) {
                                     setShow={setShow}
                                     videoId={videoId}
                                     setVideoId={setVideoId}
+                                    style={'top-[30%] md:top-[10%]'}
                                 />
                             </ContentWrapper>
                         </>

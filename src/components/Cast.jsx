@@ -14,7 +14,7 @@ function Cast({ data, loading }) {
         <div className="mt-10">
             <ContentWrapper>
                 <div className="text-2xl font-semibold text-white mb-5">Top Cast</div>
-                {!loading && (
+                {!loading ? (
                     <div>
                         <Swiper
                             slidesPerView={5}
@@ -55,6 +55,8 @@ function Cast({ data, loading }) {
                             })}
                         </Swiper>
                     </div>
+                ) : (
+                <div className="text-white">loading...</div>
                 )}
             </ContentWrapper>
         </div>
