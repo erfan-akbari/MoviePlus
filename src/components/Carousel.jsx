@@ -11,12 +11,13 @@ import ShimmerLoading from './ShimmerLoading';
 import CircleRating from './CircleRating';
 import Genres from './Genres';
 
-function Carousel({ data, loading, type }) {
+function Carousel({ data, loading, type, title }) {
     const { url } = useSelector(state => state.home)
 
     return (
         <div className='relative mt-5'>
             <ContentWrapper>
+                {title && <h2 className="text-2xl font-semibold text-white mb-5">{title}</h2>}
                 <Swiper
                     slidesPerView={5}
                     spaceBetween={10}

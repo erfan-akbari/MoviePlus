@@ -65,7 +65,7 @@ function VideosSection({ data, loading }) {
                                 )
                             })}
                         </Swiper>
-                        <VideoPopup style={'top-[80%] md:top-[60%]'} show={show} setShow={setShow} videoId={videoId} setVideoId={setVideoId} />
+                        <VideoPopup style={'top-[60%] md:top-[60%]'} show={show} setShow={setShow} videoId={videoId} setVideoId={setVideoId} />
                     </div>
                 ) : (
                     <div className="text-white">loading...</div>

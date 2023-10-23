@@ -3,6 +3,8 @@ import useFetch from "../hooks/useFetch"
 import DetailsBanner from "../components/DetailsBanner"
 import Cast from "../components/Cast"
 import VideosSection from "../components/VideosSection"
+import Recommendation from "../components/Recommendation"
+import Similar from "../components/Similar"
 
 function Details() {
   const { mediaType, id } = useParams()
@@ -14,6 +16,8 @@ function Details() {
       <DetailsBanner videos={data?.result?.[0]} crew={credits?.crew} />
       <Cast data={credits?.cast} loading={creditsLoading} />
       <VideosSection data={data} loading={loading} />
+      <Similar mediaType={mediaType} id={id} />
+      <Recommendation mediaType={mediaType} id={id} />
     </main>
   )
 }
