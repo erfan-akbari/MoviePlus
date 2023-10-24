@@ -48,11 +48,11 @@ function Header() {
   }
 
   const searchQueryHeader = e => {
-    if (query.length > 0) {
-      navigate(`/search/${query}`)
+    if (query.length > 0 && e.key === "Enter") {
+      navigate(`/search/${query.trim()}`)
       setTimeout(() => {
         setShowSearch(false)
-      }, 1000);
+      }, 500);
     }
   }
 
@@ -94,6 +94,7 @@ function Header() {
               placeholder='Search for a movie or tv show....'
               value={query}
               onChange={e => setQuery(e.target.value)}
+              onKeyUp={e => searchQueryHeader(e)}
             />
             <VscChromeClose className='text-black text-xl cursor-pointer' onClick={() => setShowSearch(false)} />
           </div>

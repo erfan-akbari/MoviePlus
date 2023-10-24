@@ -18,9 +18,18 @@ function HeroBanner() {
     setBackground(bg)
   }, [data])
 
-  const searchQueryHeader = e => {
+  const searchQueryHeader = () => {
     if (query.length > 0) {
-      navigate(`/search/${query}`)
+      navigate(`/search/${query.trim()}`)
+    }
+  }
+
+  const searchQueryHeaderEnter = e => {
+    if (query.length > 0 && e.key === "Enter") {
+      navigate(`/search/${query.trim()}`)
+      setTimeout(() => {
+        setShowSearch(false)
+      }, 500);
     }
   }
 
@@ -46,6 +55,7 @@ function HeroBanner() {
               placeholder='Search for a movie or tv show....'
               value={query}
               onChange={e => setQuery(e.target.value)}
+              onKeyUp={e => searchQueryHeaderEnter(e)}
             />
             <button
               className='basis-[20%] gradient-1 h-full outline-none border-none '
