@@ -25,17 +25,11 @@ function VideosSection({ data, loading }) {
                             spaceBetween={10}
                             navigation={true}
                             breakpoints={{
-                                640: {
+                                768: {
                                     slidesPerView: 4,
                                 },
-                                768: {
-                                    slidesPerView: 5,
-                                },
                                 1080: {
-                                    slidesPerView: 6,
-                                },
-                                1200: {
-                                    slidesPerView: 7,
+                                    slidesPerView: 5,
                                 },
                             }}
                             modules={[Navigation]}
