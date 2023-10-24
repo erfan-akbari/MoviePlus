@@ -5,7 +5,7 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import { fetchDataFromApi } from '../utils/api'
 import ContentWrapper from '../components/ContentWrapper'
 import Spinner from '../components/Spinner'
-
+import MovieCard from '../components/MovieCard'
 
 function SearchResult() {
   const [data, setData] = useState(null)
@@ -18,6 +18,7 @@ function SearchResult() {
     fetchDataFromApi(`/search/multi?quray=${quray}&page=${pageNum}`)
       .then(res => {
         setTimeout(() => {
+          // console.log(res);
           setData(res)
           setPageNum(prev => prev + 1)
           setLoading(false)
@@ -41,6 +42,7 @@ function SearchResult() {
   }
 
   useEffect(() => {
+    setPageNum(1)
     fetchInitialData()
   }, [quray])
 
@@ -55,7 +57,24 @@ function SearchResult() {
       {!loading && (
         <ContentWrapper>
           {data?.results?.lenght > 0 ? (
-            <div className=""></div>
+            <>
+              <div className="text-3xl bg-white font-semibold mb-10">
+                {`Search ${data?.total_results > 1 ? 'results' : 'result'} of '${quray}'`}
+              </div>
+              <InfiniteScroll
+                className='flex items-center justify-between flex-wrap'
+                dataLength={data?.results?.lenght || []}
+                next={fetchNextPageData}
+                hasMore={pageNum <= data?.total_pages}
+              >
+                {data?.results?.map((movie, index) => {
+                  if (movie.media_type === "person") return;
+                  return (
+                    <MovieCard key={index} data={movie} fromSearch={true} />
+                  )
+                })}
+              </InfiniteScroll>
+            </>
           ) : (
             <div className="text-3xl font-bold h-[470px] w-full">
               <h1 className="text-white gradient-1 h-15 p-5 rounded-lg text-center mt-40">Sorry, Results not found!</h1>
