@@ -7,7 +7,7 @@ function Similar({ mediaType, id }) {
     const { data, loading, error } = useFetch(`/${mediaType}/${id}/similar`)
 
     const title = mediaType === "tv" ? "Similar TV Shows" : "Similar Movies"
-    console.log(data);
+
     return (
         <section className="my-10">
             {data?.results && (

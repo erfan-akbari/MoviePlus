@@ -1,7 +1,7 @@
 
 function ShimmerLoading() {
     return (
-        <div className="p-4 md:w-1/3">
+        <div className="p-4 w-1/4 md:w-1/5">
             <div className="h-full rounded-lg overflow-hidden w-20 sm:w-full">
                 <div className="lg:h-72 bg-primary-200 h-32 md:h-40 w-full object-cover object-center"></div>
                 <div className="md:py-2">

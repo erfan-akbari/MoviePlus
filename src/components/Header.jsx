@@ -17,6 +17,7 @@ function Header() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    setShow(true)
   }, [location])
 
   const controNavbar = () => {

@@ -17,19 +17,24 @@ function Carousel({ data, loading, type, title }) {
     return (
         <div className='relative mt-5'>
             <ContentWrapper>
-                {title && <h2 className="text-2xl font-semibold text-white mb-5">{title}</h2>}
+                {title && <h2 className="text-2xl font-semibold  text-white mb-5">{title}</h2>}
                 <Swiper
-                    slidesPerView={5}
+                    slidesPerView={4}
                     spaceBetween={10}
                     navigation={true}
                     modules={[Navigation]}
+                    breakpoints={{
+                        768: {
+                            slidesPerView: 5,
+                        },
+                    }}
                     className="mySwiper"
                 >
                     {!loading ? (
                         <>
                             {data?.map(item => {
                                 const posterUrl = item.poster_path ?
-                                    `${url.poster}${item.poster_path}` : 'loding'
+                                    `${url.poster}${item.poster_path}` : '/images/notImage.png'
                                 return (
                                     <SwiperSlide className="flex flex-col"
                                         key={item.id}>
@@ -62,7 +67,7 @@ function Carousel({ data, loading, type, title }) {
                             <ShimmerLoading />
                             <ShimmerLoading />
                             <ShimmerLoading />
-                            <ShimmerLoading />
+                            <ShimmerLoading className='hidden md:block' />
                         </div>
                     )}
                 </Swiper>

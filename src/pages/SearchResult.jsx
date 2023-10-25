@@ -11,24 +11,23 @@ function SearchResult() {
   const [data, setData] = useState(null)
   const [pageNum, setPageNum] = useState(1)
   const [loading, setLoading] = useState(false)
-  const { quray } = useParams()
+  const { query } = useParams()
 
   const fetchInitialData = () => {
     setLoading(true)
-    fetchDataFromApi(`/search/multi?quray=${quray}&page=${pageNum}`)
+    fetchDataFromApi(`/search/multi?query=${query}&page=${pageNum}`)
       .then(res => {
         setTimeout(() => {
-          // console.log(res);
           setData(res)
           setPageNum(prev => prev + 1)
           setLoading(false)
-        }, 1500);
+        }, 500);
       })
   }
 
   const fetchNextPageData = () => {
     setLoading(true)
-    fetchDataFromApi(`/search/multi?quray=${quray}&page=${pageNum}`)
+    fetchDataFromApi(`/search/multi?query=${query}&page=${pageNum}`)
       .then(res => {
         if (data?.results) {
           setData({
@@ -42,9 +41,8 @@ function SearchResult() {
   }
 
   useEffect(() => {
-    setPageNum(1)
     fetchInitialData()
-  }, [quray])
+  }, [query])
 
 
   return (
@@ -56,16 +54,13 @@ function SearchResult() {
       )}
       {!loading && (
         <ContentWrapper>
-          {data?.results?.lenght > 0 ? (
+          {!data?.results?.lenght > 0 ? (
             <>
-              <div className="text-3xl bg-white font-semibold mb-10">
-                {`Search ${data?.total_results > 1 ? 'results' : 'result'} of '${quray}'`}
+              <div className="text-3xl text-white font-semibold mb-10">
+                {`Search ${data?.total_results > 1 ? 'results' : 'result'} of`}<span className='text-orange-600 ml-2'>{query}</span>
               </div>
-              <InfiniteScroll
-                className='flex items-center justify-between flex-wrap'
-                dataLength={data?.results?.lenght || []}
-                next={fetchNextPageData}
-                hasMore={pageNum <= data?.total_pages}
+              <section
+                className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5'
               >
                 {data?.results?.map((movie, index) => {
                   if (movie.media_type === "person") return;
@@ -73,7 +68,7 @@ function SearchResult() {
                     <MovieCard key={index} data={movie} fromSearch={true} />
                   )
                 })}
-              </InfiniteScroll>
+              </section>
             </>
           ) : (
             <div className="text-3xl font-bold h-[470px] w-full">
