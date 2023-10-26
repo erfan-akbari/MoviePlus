@@ -26,12 +26,12 @@ function SearchResult() {
   }
 
   const fetchNextPageData = () => {
-    setLoading(true)
     fetchDataFromApi(`/search/multi?query=${query}&page=${pageNum}`)
       .then(res => {
         if (data?.results) {
           setData({
-            ...data, results: [...data.results, ...res.results]
+            ...data,
+            results: [...data?.results, ...res.results],
           })
         } else {
           setData(res)
@@ -41,6 +41,7 @@ function SearchResult() {
   }
 
   useEffect(() => {
+    setPageNum(1)
     fetchInitialData()
   }, [query])
 
@@ -54,13 +55,17 @@ function SearchResult() {
       )}
       {!loading && (
         <ContentWrapper>
-          {!data?.results?.lenght > 0 ? (
+          {data?.results?.length > 0 ? (
             <>
               <div className="text-3xl text-white font-semibold mb-10">
                 {`Search ${data?.total_results > 1 ? 'results' : 'result'} of`}<span className='text-orange-600 ml-2'>{query}</span>
               </div>
-              <section
+              <InfiniteScroll
                 className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5'
+                dataLength={data?.results?.length || []}
+                next={fetchNextPageData}
+                hasMore={pageNum <= data?.total_pages}
+                loader={<Spinner />}
               >
                 {data?.results?.map((movie, index) => {
                   if (movie.media_type === "person") return;
@@ -68,7 +73,7 @@ function SearchResult() {
                     <MovieCard key={index} data={movie} fromSearch={true} />
                   )
                 })}
-              </section>
+              </InfiniteScroll>
             </>
           ) : (
             <div className="text-3xl font-bold h-[470px] w-full">
