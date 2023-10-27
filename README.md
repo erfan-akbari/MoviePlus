@@ -1,6 +1,6 @@
 # MoviePlus+
 
-MoviePlus+ project developed with React + Vite
+MoviePlus+ project developed with `React + Vite`
 
 <br />
 
