@@ -64,11 +64,10 @@ function Explore() {
     setGenre(null)
     fetchInitialData()
   }, [mediaType])
-  
+
   useEffect(() => {
     setPageNum(1)
     fetchInitialData()
-    console.log(filters);
   }, [sortby])
 
   useEffect(() => {
@@ -114,11 +113,11 @@ function Explore() {
         <ContentWrapper>
           {data?.results?.length > 0 && (
             <>
-              <nav className='flex items-center justify-between flex-wrap'>
-                <div className="text-3xl text-white font-semibold mb-10">
-                  <span className='text-orange-600 ml-2'>{mediaType === 'movie' ? 'Movies' : 'TV Shows'}</span>
-                </div>
-                <div className="flex items-center gap-5 my-10">
+              <nav className='flex items-center gap-5 justify-between flex-wrap my-10'>
+                <h2 className="text-4xl font-bold text-orange-600">
+                 {mediaType === 'movie' ? 'Explore Movies' : 'Explore TV Shows'}
+                </h2>
+                <div className="flex items-center flex-wrap gap-5">
                   <Select
                     isMulti
                     name='genres'
@@ -129,7 +128,7 @@ function Explore() {
                     getOptionLabel={(option) => option.name}
                     getOptionValue={(option) => option.id}
                     placeholder='Select genres'
-                    className=''
+                    className='min-w-[200px]'
                     classNamePrefix=''
                   ></Select>
                   <Select
@@ -143,7 +142,7 @@ function Explore() {
                     getOptionLabel={(option) => option.label}
                     getOptionValue={(option) => option.value}
                     placeholder='Sort By'
-                    className=''
+                    className='min-w-[200px]'
                     classNamePrefix=''
                   ></Select>
                 </div>
@@ -158,7 +157,7 @@ function Explore() {
                 {data?.results?.map((movie, index) => {
                   if (movie.media_type === "person") return;
                   return (
-                    <MovieCard key={index} data={movie} fromSearch={true} />
+                    <MovieCard key={index} data={movie} />
                   )
                 })}
               </InfiniteScroll>
