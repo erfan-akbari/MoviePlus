@@ -157,7 +157,7 @@ function Explore() {
                 {data?.results?.map((movie, index) => {
                   if (movie.media_type === "person") return;
                   return (
-                    <MovieCard key={index} data={movie} />
+                    <MovieCard key={index} data={movie} mediaType={mediaType} />
                   )
                 })}
               </InfiniteScroll>
